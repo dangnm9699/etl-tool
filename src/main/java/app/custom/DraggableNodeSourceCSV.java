@@ -2,6 +2,7 @@ package app.custom;
 
 import app.connection.ConnectorCSV;
 import app.controller.ConfigureCSVSourceController;
+import app.model.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

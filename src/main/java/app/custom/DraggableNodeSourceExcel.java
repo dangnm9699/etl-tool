@@ -2,6 +2,7 @@ package app.custom;
 
 import app.connection.ConnectorExcel;
 import app.controller.ConfigureExelSourceController;
+import app.model.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;

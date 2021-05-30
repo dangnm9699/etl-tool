@@ -2,6 +2,7 @@ package app.custom;
 
 import app.connection.ConnectorDatabase;
 import app.controller.ConfigureDBSourceController;
+import app.model.*;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
