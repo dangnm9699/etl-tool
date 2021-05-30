@@ -1,0 +1,68 @@
+.cubic-icon {
+    -fx-fill: rgba(80.0, 80.0, 80.0, 0.0);
+    -fx-stroke: black;
+}
+
+.drag-icon {
+    -fx-background-radius: 10;
+}
+
+.node-overlay {
+    -fx-background-radius: 10 10 0 0;
+}
+
+.input {
+    -fx-background-radius: 0 0 0 10;
+    -fx-background-color: rgb(236, 112, 99);
+}
+
+.settings {
+    -fx-background-color: rgb(153, 163, 164);
+}
+
+.output {
+    -fx-background-radius: 0 0 10 0;
+    -fx-background-color: rgb(93, 173, 226);
+}
+
+.input:hover {
+    -fx-background-color: rgb(245, 183, 177);
+}
+
+.settings:hover {
+    -fx-background-color: rgb(204, 209, 209);
+}
+
+.output:hover {
+    -fx-background-color: rgb(174, 214, 241);
+}
+
+.close-button {
+    -fx-background-radius: 0 10 0 0;
+}
+
+.close-button:hover {
+    -fx-background-color: tomato;
+    -fx-text-fill: white;
+}
+
+.close-button:pressed {
+    -fx-background-color: crimson;
+    -fx-text-fill: white;
+}
+
+.icon-blue {
+    -fx-background-color: rgb(52, 152, 219);
+}
+
+.icon-red {
+    -fx-background-color: rgb(231, 76, 60);
+}
+
+.icon-green {
+    -fx-background-color: rgb(46, 204, 113);
+}
+
+.icon-purple {
+    -fx-background-color: rgb(142, 68, 173);
+}

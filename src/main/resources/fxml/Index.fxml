@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.30402010050251255" maxHeight="-Infinity"
+           maxWidth="-Infinity"
+           minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0"
+           prefWidth="318.0" stylesheets="@../styles/Index.css" xmlns="http://javafx.com/javafx/16"
+           fx:controller="app.controller.IndexController">
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+        <VBox layoutX="90.0" layoutY="-41.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <Label alignment="CENTER" text="Data Integration" AnchorPane.bottomAnchor="0.0"
+                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            </AnchorPane>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                <Label alignment="CENTER" layoutX="88.0" layoutY="22.0" text="Team 2" AnchorPane.bottomAnchor="0.0"
+                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+            </AnchorPane>
+        </VBox>
+    </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+        <VBox layoutX="108.0" layoutY="46.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane prefHeight="50.0" VBox.vgrow="ALWAYS">
+                <Button fx:id="workspace" layoutX="71.0" layoutY="57.0" mnemonicParsing="false" text="Workspace"
+                        AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0"
+                        AnchorPane.topAnchor="20.0"/>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" VBox.vgrow="ALWAYS">
+                <Button fx:id="about" mnemonicParsing="false" text="About" AnchorPane.bottomAnchor="20.0"
+                        AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="20.0"/>
+            </AnchorPane>
+            <AnchorPane prefHeight="50.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <Button fx:id="exit" layoutX="77.0" layoutY="1.0" mnemonicParsing="false" text="Exit"
+                            AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0"
+                            AnchorPane.topAnchor="20.0"/>
+                </children>
+            </AnchorPane>
+        </VBox>
+    </AnchorPane>
+</SplitPane>
