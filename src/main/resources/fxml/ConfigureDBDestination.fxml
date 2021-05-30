@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16"
+            fx:controller="app.controller.ConfigureDBDestinationController">
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <TabPane prefHeight="400.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS">
+            <Tab fx:id="tab1" text="Connection">
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                    <padding>
+                        <Insets right="5.0" top="5.0"/>
+                    </padding>
+                    <HBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Region prefWidth="30.0" HBox.hgrow="NEVER"/>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <AnchorPane VBox.vgrow="ALWAYS">
+                                <VBox.margin>
+                                    <Insets/>
+                                </VBox.margin>
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Label prefWidth="130.0" text="Driver" HBox.hgrow="NEVER"/>
+                                    <Region prefWidth="20.0" HBox.hgrow="NEVER"/>
+                                    <MenuButton fx:id="dbDriver" contentDisplay="RIGHT" mnemonicParsing="false"
+                                                text="Choose driver"/>
+                                </HBox>
+                            </AnchorPane>
+                            <AnchorPane VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Label prefWidth="130.0" text="Host" HBox.hgrow="NEVER"/>
+                                    <Region prefWidth="20.0" HBox.hgrow="NEVER"/>
+                                    <TextField fx:id="dbHost" prefHeight="50.0" prefWidth="250.0" promptText="Host"/>
+                                </HBox>
+                            </AnchorPane>
+                            <AnchorPane VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Label prefWidth="130.0" text="Port" HBox.hgrow="NEVER"/>
+                                    <Region prefWidth="20.0" HBox.hgrow="NEVER"/>
+                                    <TextField fx:id="dbPort" prefHeight="50.0" prefWidth="250.0" promptText="Port"/>
+                                </HBox>
+                            </AnchorPane>
+                            <AnchorPane VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Label prefWidth="130.0" text="Username" HBox.hgrow="NEVER"/>
+                                    <Region prefWidth="20.0" HBox.hgrow="NEVER"/>
+                                    <TextField fx:id="dbUsername" prefHeight="50.0" prefWidth="250.0"
+                                               promptText="Username"/>
+                                </HBox>
+                            </AnchorPane>
+                            <AnchorPane VBox.vgrow="ALWAYS">
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Label prefWidth="130.0" text="Password" HBox.hgrow="NEVER"/>
+                                    <Region prefWidth="20.0" HBox.hgrow="NEVER"/>
+                                    <PasswordField fx:id="dbPassword" prefHeight="50.0" prefWidth="250.0"
+                                                   promptText="Password"/>
+                                </HBox>
+                            </AnchorPane>
+                            <AnchorPane>
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Label prefWidth="130.0" text="Database" HBox.hgrow="NEVER"/>
+                                    <Region prefWidth="20.0" HBox.hgrow="NEVER"/>
+                                    <TextField fx:id="dbDatabase" prefHeight="50.0" prefWidth="250.0"
+                                               promptText="Database"/>
+                                </HBox>
+                            </AnchorPane>
+                            <AnchorPane>
+                                <HBox alignment="CENTER_LEFT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <padding>
+                                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+                                    </padding>
+                                    <Button fx:id="testConn" mnemonicParsing="false" prefWidth="130.0"
+                                            text="Test connection"/>
+                                    <Region prefWidth="20.0"/>
+                                    <ImageView fx:id="imageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                               preserveRatio="true"/>
+                                    <Label prefHeight="30.0" prefWidth="223.0"
+                                           text="&quot;Test connection&quot; button must be clicked !" textFill="RED"
+                                           wrapText="true">
+                                        <HBox.margin>
+                                            <Insets/>
+                                        </HBox.margin>
+                                        <padding>
+                                            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                        </padding>
+                                        <font>
+                                            <Font size="9.0"/>
+                                        </font>
+                                    </Label>
+                                </HBox>
+                            </AnchorPane>
+                        </VBox>
+                        <Region prefWidth="30.0"/>
+                    </HBox>
+                </AnchorPane>
+            </Tab>
+            <Tab fx:id="tab2" text="Mappings">
+                <AnchorPane fx:id="anchorPaneColumns">
+                    <TableView fx:id="mappingTable" editable="true" layoutX="47.0" layoutY="124.0" prefHeight="200.0"
+                               prefWidth="300.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="220.0"/>
+                    <MenuButton fx:id="dbTable" layoutX="111.0" layoutY="48.0" mnemonicParsing="false"
+                                text="Choose table">
+                        <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1"/>
+                            <MenuItem mnemonicParsing="false" text="Action 2"/>
+                        </items>
+                    </MenuButton>
+                    <Label layoutX="47.0" layoutY="52.0" text="Table" AnchorPane.leftAnchor="10.0"/>
+                    <Label layoutX="47.0" layoutY="88.0" text="Mappings" AnchorPane.leftAnchor="10.0"/>
+                    <TableView fx:id="output" layoutX="324.0" layoutY="124.0" prefHeight="200.0" prefWidth="200.0"
+                               AnchorPane.rightAnchor="10.0"/>
+                    <Label layoutX="359.0" layoutY="88.0" text="Input columns">
+                        <padding>
+                            <Insets left="5.0"/>
+                        </padding>
+                    </Label>
+                    <Button fx:id="create" layoutX="493.0" layoutY="48.0" mnemonicParsing="false" text="Create"
+                            AnchorPane.rightAnchor="10.0"/>
+                </AnchorPane>
+            </Tab>
+        </TabPane>
+        <AnchorPane prefHeight="50.0" VBox.vgrow="NEVER">
+            <HBox alignment="CENTER_RIGHT" layoutX="200.0" layoutY="-36.0" prefWidth="200.0"
+                  AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                  AnchorPane.topAnchor="0.0">
+                <padding>
+                    <Insets right="10.0"/>
+                </padding>
+                <Button fx:id="cancel" mnemonicParsing="false" prefWidth="80.0" text="Cancel"/>
+                <Region prefWidth="10.0"/>
+                <Button fx:id="ok" mnemonicParsing="false" prefWidth="80.0" text="OK"/>
+            </HBox>
+        </AnchorPane>
+    </VBox>
+</AnchorPane>
