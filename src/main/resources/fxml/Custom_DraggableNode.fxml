@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+         minWidth="-Infinity"
+         prefHeight="130.0" prefWidth="150.0" stylesheets="@../styles/Custom_Styles.css"
+         type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/16">
+    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+          AnchorPane.topAnchor="0.0">
+        <GridPane fx:id="gridPane" style="-fx-background-color: #566573;" styleClass="node-overlay">
+            <columnConstraints>
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES"/>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="30.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <Label fx:id="close" alignment="CENTER" prefHeight="38.0" prefWidth="30.0"
+                   style="-fx-text-fill: white; -fx-font-weight: bold;" styleClass="close-button" text="X"
+                   textAlignment="RIGHT" GridPane.columnIndex="1">
+                <GridPane.margin>
+                    <Insets/>
+                </GridPane.margin>
+            </Label>
+            <Label fx:id="title" ellipsisString="" prefHeight="30.0" prefWidth="120.0"
+                   style="-fx-text-fill: white; -fx-font-weight: bold;" styleClass="title-bar" text="Label">
+                <GridPane.margin>
+                    <Insets left="5.0"/>
+                </GridPane.margin>
+            </Label>
+        </GridPane>
+        <HBox alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0">
+            <AnchorPane fx:id="handleInputLink" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"
+                        styleClass="input"/>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+                <children>
+                    <HBox alignment="CENTER" prefHeight="30.0" style="-fx-background-color: white;">
+                        <children>
+                            <ImageView fx:id="imageConfigured" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                       preserveRatio="true"/>
+                            <Region prefWidth="10.0"/>
+                            <ImageView fx:id="imageRun" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true"
+                                       preserveRatio="true"/>
+                        </children>
+                    </HBox>
+                    <AnchorPane fx:id="handleConfig" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="90.0"
+                                styleClass="settings" VBox.vgrow="ALWAYS"/>
+                </children>
+            </VBox>
+            <AnchorPane fx:id="handleOutputLink" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"
+                        styleClass="output"/>
+        </HBox>
+    </VBox>
+</fx:root>

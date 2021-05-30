@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<fx:root xmlns:fx="http://javafx.com/fxml/1" fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity"
+         minHeight="-Infinity"
+         minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0"
+         style="-fx-background-color: #D7DBDD;" type="javafx.scene.layout.BorderPane"
+         xmlns="http://javafx.com/javafx/16">
+    <top>
+        <AnchorPane prefHeight="40.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <HBox alignment="CENTER_LEFT" layoutX="79.0" layoutY="-30.0" prefHeight="100.0" prefWidth="200.0"
+                  style="-fx-background-color: #D7DBDD;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                  AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <padding>
+                    <Insets bottom="5.0" left="5.0" top="5.0"/>
+                </padding>
+                <AnchorPane prefWidth="200.0" HBox.hgrow="ALWAYS">
+                    <Label layoutX="82.0" layoutY="5.0" style="-fx-font-weight: bold;" text="Project"
+                           AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                           AnchorPane.topAnchor="0.0">
+                        <padding>
+                            <Insets left="5.0"/>
+                        </padding>
+                    </Label>
+                </AnchorPane>
+                <AnchorPane prefWidth="250.0" HBox.hgrow="NEVER">
+                    <HBox alignment="CENTER_RIGHT" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                          AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <Button fx:id="buttonStop" mnemonicParsing="false" text="Stop"/>
+                        <Region prefWidth="20.0"/>
+                        <Button fx:id="buttonRun" mnemonicParsing="false" text="Run"/>
+                        <Region prefWidth="20.0"/>
+                        <Button fx:id="buttonBack" mnemonicParsing="false" text="Back"/>
+                    </HBox>
+                </AnchorPane>
+            </HBox>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane fx:id="anchorPaneRoot" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+            <SplitPane fx:id="splitPane" dividerPositions="0.29797979797979796" AnchorPane.bottomAnchor="0.0"
+                       AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="316.0" prefWidth="130.0">
+                    <TreeView fx:id="treeView" layoutY="29.0" prefHeight="200.0" prefWidth="200.0"
+                              style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0"
+                              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="458.0" prefWidth="615.0">
+                    <VBox alignment="CENTER" layoutX="139.0" layoutY="143.0" AnchorPane.bottomAnchor="0.0"
+                          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="anchorPane" style="-fx-background-color: white;" VBox.vgrow="ALWAYS"/>
+                        <AnchorPane prefHeight="40.0" style="-fx-background-color: #D7DBDD;" VBox.vgrow="NEVER">
+                            <Label layoutX="14.0" layoutY="12.0" style="-fx-font-weight: bold;" text="Output:"
+                                   AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0"
+                                   AnchorPane.topAnchor="5.0"/>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="150.0" style="-fx-background-color: white;" VBox.vgrow="NEVER">
+                            <TextArea fx:id="output" editable="false" layoutX="7.0" layoutY="-35.0"
+                                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                      AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <padding>
+                                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+                                </padding>
+                            </TextArea>
+                        </AnchorPane>
+                    </VBox>
+                </AnchorPane>
+            </SplitPane>
+        </AnchorPane>
+    </center>
+</fx:root>
