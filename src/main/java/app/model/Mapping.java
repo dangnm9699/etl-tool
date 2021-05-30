@@ -1,27 +1,44 @@
 package app.model;
 
+import javafx.beans.property.SimpleStringProperty;
+import tech.tablesaw.api.ColumnType;
+
 public class Mapping {
-    private String external;
-    private String output;
+    private final SimpleStringProperty input;
+    private final SimpleStringProperty output;
+    private final ColumnType type;
 
-    public Mapping(String external, String output) {
-        this.external = external;
-        this.output = output;
+    public Mapping(String input, String output, ColumnType type) {
+        this.input = new SimpleStringProperty(input);
+        this.output = new SimpleStringProperty(output);
+        this.type = type;
     }
 
-    public String getExternal() {
-        return external;
+    public String getInput() {
+        return input.get();
     }
 
-    public void setExternal(String external) {
-        this.external = external;
+    public void setInput(String input) {
+        this.input.set(input);
+    }
+
+    public SimpleStringProperty inputProperty() {
+        return input;
     }
 
     public String getOutput() {
-        return output;
+        return output.get();
     }
 
     public void setOutput(String output) {
-        this.output = output;
+        this.output.set(output);
+    }
+
+    public SimpleStringProperty outputProperty() {
+        return output;
+    }
+
+    public ColumnType getType() {
+        return type;
     }
 }

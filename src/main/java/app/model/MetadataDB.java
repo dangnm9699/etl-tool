@@ -1,12 +1,12 @@
 package app.model;
 
 public class MetadataDB {
-    private Driver driver;
-    private String host;
-    private String port;
-    private String username;
-    private String password;
-    private String database;
+    private final Driver driver;
+    private final String host;
+    private final String port;
+    private final String username;
+    private final String password;
+    private final String database;
 
     public MetadataDB(
             Driver driver, String host,
@@ -25,47 +25,23 @@ public class MetadataDB {
         return driver;
     }
 
-    public void setDriver(Driver driver) {
-        this.driver = driver;
-    }
-
     public String getHost() {
         return host;
-    }
-
-    public void setHost(String host) {
-        this.host = host;
     }
 
     public String getPort() {
         return port;
     }
 
-    public void setPort(String port) {
-        this.port = port;
-    }
-
     public String getUsername() {
         return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public String getDatabase() {
         return database;
-    }
-
-    public void setDatabase(String database) {
-        this.database = database;
     }
 }
