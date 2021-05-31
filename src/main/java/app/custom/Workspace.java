@@ -332,16 +332,18 @@ public class Workspace extends BorderPane implements Initializable {
                 List<Future<Void>> futures = executor.invokeAll(callables);
                 //
                 for (Future<Void> future : futures) future.get();
-                output.setText("Successfully");
-                output.setStyle("-fx-text-fill: seagreen");
             } catch (Exception exception) {
-                append("Failed");
-                output.setText(OUTPUT.toString());
-                output.setStyle("-fx-text-fill: tomato");
                 exception.printStackTrace();
             } finally {
                 //Shutdown executor
                 executor.shutdown();
+            }
+            output.setText("Successfully");
+            output.setStyle("-fx-text-fill: seagreen");
+            if (!OUTPUT.toString().equals("")) {
+                append("Failed");
+                output.setText(OUTPUT.toString());
+                output.setStyle("-fx-text-fill: tomato");
             }
             //Enable stop button
             buttonStop.setDisable(false);
