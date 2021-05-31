@@ -15,6 +15,7 @@ import java.util.List;
 
 public class DraggableNodeSourceExcel extends DraggableNodeSource {
     private ConfigureExelSource config;
+    private List<Column> colList;
 
     public DraggableNodeSourceExcel() {
         super();
@@ -37,12 +38,13 @@ public class DraggableNodeSourceExcel extends DraggableNodeSource {
                 stage.setResizable(false);
 
                 ConfigureExelSourceController controller = loader.getController();
-                controller.presetConfig(this.config);
+                controller.presetConfig(this.config,this.colList);
 
                 stage.setScene(new Scene(root));
                 stage.showAndWait();
 //
                 if (controller.getCloseType() == CloseType.OK) {
+                    this.colList = controller.getColumnList();
                     this.config = controller.getConfig();
                     this.setConfigured(true);
                     this.sendConfigDataToOutputs();
@@ -67,7 +69,7 @@ public class DraggableNodeSourceExcel extends DraggableNodeSource {
         try {
             ConnectorExcel connector = new ConnectorExcel(this.config.getPath());
             connector.setHasLabel(this.config.getHasLabel());
-            dataset = connector.retrieveData(this.config.getHasLabel(),this.config.getTable(),this.config.getSelectedExternals(),500);
+            dataset = connector.retrieveData(this.config.getHasLabel(),this.config.getTable(),this.config.getMappingSelects(),500);
         } catch (IOException e) {
             e.printStackTrace();
             Workspace.appendLn(e.getMessage());

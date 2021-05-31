@@ -12,7 +12,7 @@
                <TextField fx:id="path" layoutX="130.0" layoutY="42.0" prefHeight="26.0" prefWidth="372.0" promptText="Select .xlsx file..." />
                <CheckBox fx:id="check" layoutX="262.0" layoutY="79.0" mnemonicParsing="false" text="Label Row" />
                <Label layoutX="42.0" layoutY="133.0" text="Tabel:" />
-               <TableView fx:id="tableView" layoutX="130.0" layoutY="151.0" prefHeight="239.0" prefWidth="372.0" />
+               <TableView fx:id="tableView" layoutX="42.0" layoutY="151.0" prefHeight="239.0" prefWidth="372.0" />
                 <Button fx:id="view" layoutX="131.0" layoutY="107.0" mnemonicParsing="false" text="View Tabel" />
              <Button fx:id="sample" layoutX="217.0" layoutY="107.0" mnemonicParsing="false" onAction="#showSamples" text="Show samples" />
              <MenuButton fx:id="exelTable" layoutX="130.0" layoutY="75.0" mnemonicParsing="false" text="Choose Table">
@@ -21,6 +21,8 @@
                      <MenuItem mnemonicParsing="false" text="Action 2" />
                    </items>
                  </MenuButton>
+         <TableView fx:id="setType" editable="true" layoutX="422.0" layoutY="151.0" prefHeight="239.0" prefWidth="166.0" />
+         <Button fx:id="set" layoutX="422.0" layoutY="120.0" mnemonicParsing="false" text="Set Types" />
          </AnchorPane>
          <AnchorPane prefHeight="50.0" VBox.vgrow="NEVER">
             <HBox alignment="CENTER_RIGHT" layoutX="200.0" layoutY="-36.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

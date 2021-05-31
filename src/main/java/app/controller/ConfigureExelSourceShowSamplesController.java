@@ -37,7 +37,7 @@ public class ConfigureExelSourceShowSamplesController implements Initializable {
             connectorExcel.setHasLabel(config.getHasLabel());
             connectorExcel.setTable(config.getTable());
 
-            Table table = connectorExcel.retrieveData(config.getHasLabel(),config.getTable(),config.getSelectedExternals(),100);
+            Table table = connectorExcel.retrieveData(config.getHasLabel(),config.getTable(),config.getMappingSelects(),100);
             int numCol = table.columnCount();
             System.out.println("num "+numCol);
             for (int idx = 0; idx < numCol; idx++) {

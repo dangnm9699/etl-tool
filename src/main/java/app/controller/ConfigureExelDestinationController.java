@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ConfigureExelDestinationController extends ConfigureExelController {
@@ -260,8 +261,8 @@ public class ConfigureExelDestinationController extends ConfigureExelController 
         //Add columns to table
         output.getColumns().add(name);
         output.getColumns().add(type);
-
-        List<Column> columns = connectorExcel.retrieveColumns(tableName);
+        List<Column> list = new ArrayList<Column>();
+        List<Column> columns = connectorExcel.retrieveColumns(tableName,list);
         //Add items to table
         output.getItems().addAll(columns);
     }

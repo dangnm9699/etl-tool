@@ -2,6 +2,7 @@ package app.connection;
 
 import app.custom.Workspace;
 import app.model.Column;
+import app.model.MappingSelect;
 import com.monitorjbl.xlsx.StreamingReader;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -10,14 +11,16 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import tech.tablesaw.api.ColumnType;
-import tech.tablesaw.api.StringColumn;
-import tech.tablesaw.api.Table;
+import tech.tablesaw.api.*;
 
 import java.io.*;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+
+import static tech.tablesaw.api.ColumnType.BOOLEAN;
 
 public class ConnectorExcel implements Connector {
     private String exelPath;
@@ -84,7 +87,12 @@ public class ConnectorExcel implements Connector {
         this.hasLabel = t;
     }
 
-    public Table retrieveData(boolean hasLabel, String tableName, List<String> selectedField,int maxEntries) throws IOException {
+    public Table retrieveData(boolean hasLabel, String tableName, List<MappingSelect> mappingSelects, int maxEntries) throws IOException {
+        List<String> selectedField = new ArrayList<>();
+        for (MappingSelect mappingSelect : mappingSelects) {
+            if (mappingSelect.isSelected()) selectedField.add(mappingSelect.getExternal());
+        }
+
         InputStream is = new FileInputStream(new File(exelPath));
         Workbook workbook = StreamingReader.builder()
                 .rowCacheSize(100)    // number of rows to keep in memory (defaults to 10)
@@ -99,14 +107,32 @@ public class ConnectorExcel implements Connector {
                 if (hasLabel) {
 
 //                    List<String> field = new ArrayList<>();
-                    Iterator<Cell> cellIterator = r.cellIterator();
-                    while (cellIterator.hasNext()) {
-                        Cell cell = cellIterator.next();
-//                        cell.getNumericCellValue();
-//                        field.add(String.valueOf(cell.getStringCellValue()));
-                        table.addColumns(StringColumn.create(String.valueOf(cell.getStringCellValue())));
-                    }
+//                    Iterator<Cell> cellIterator = r.cellIterator();
+//                    while (cellIterator.hasNext()) {
+//                        Cell cell = cellIterator.next();
+////                        cell.getNumericCellValue();
+////                        field.add(String.valueOf(cell.getStringCellValue()));
+//                        table.addColumns(StringColumn.create(String.valueOf(cell.getStringCellValue())));
+//                    }
 //                    System.out.println(field);
+
+                    for (Cell c : r) {
+                        int index = c.getColumnIndex();
+                        ColumnType type = mappingSelects.get(index).getType();
+                        if (type.equals(ColumnType.DOUBLE)){
+                            table.addColumns(DoubleColumn.create(String.valueOf(c.getStringCellValue())));
+                        }else if (type.equals(ColumnType.STRING)){
+                            table.addColumns(StringColumn.create(String.valueOf(c.getStringCellValue())));
+                        }else if (type.equals(ColumnType.FLOAT)){
+                            table.addColumns(DoubleColumn.create(String.valueOf(c.getStringCellValue())));
+                        }else if (type.equals(ColumnType.INTEGER)){
+                            table.addColumns(DoubleColumn.create(String.valueOf(c.getStringCellValue())));
+                        }else if (type.equals(ColumnType.LOCAL_DATE)){
+                            table.addColumns(DateColumn.create(String.valueOf(c.getStringCellValue())));
+                        }else {
+                            table.addColumns(StringColumn.create(String.valueOf(c.getStringCellValue())));
+                        }
+                    }
                     continue;
                 } else {
 //                List<String> field = new ArrayList<>();
@@ -126,9 +152,53 @@ public class ConnectorExcel implements Connector {
                 break;
             }
             for (Cell c : r) {
+
+
+
 //                    c.setCellType(CellType.NUMERIC);
                 int index = c.getColumnIndex();
-                table.column(index).appendCell(String.valueOf(c.getStringCellValue()));
+                ColumnType type = mappingSelects.get(index).getType();
+                if (type.equals(ColumnType.DOUBLE)){
+                    try {
+                        table.column(index).appendObj(c.getNumericCellValue());
+                    }catch (Exception e){
+                        table.column(index).appendObj((double)0);
+                    }
+//                    table.column(index).appendCell(Double.valueOf(c.getNumericCellValue()).toString());
+                }else if (type.equals(ColumnType.STRING)){
+                    try {
+                        table.column(index).appendCell(c.getStringCellValue());
+                    }catch (Exception e){
+                        table.column(index).appendCell("");
+                    }
+//                    table.column(index).appendCell(c.getStringCellValue());
+                }else if (type.equals(ColumnType.FLOAT)){
+                    try {
+                        table.column(index).appendObj( (double)c.getNumericCellValue());
+                    }catch (Exception e){
+                        table.column(index).appendObj((double)0);
+                    }
+//                    System.out.println("Hello World "+ c.getNumericCellValue());
+//                    table.column(index).appendCell(String.valueOf( (float)c.getNumericCellValue()));
+                }else if (type.equals(ColumnType.INTEGER)){
+                    try {
+                        table.column(index).appendObj((int)c.getNumericCellValue());
+                    }catch (Exception e){
+                        table.column(index).appendObj((int)0);
+                    }
+//                    table.column(index).appendCell(String.valueOf( (int)c.getNumericCellValue()));
+                }else if (type.equals(ColumnType.LOCAL_DATE)){
+                    try {
+                        table.column(index).appendObj((c.getDateCellValue().toInstant().atZone(ZoneId.systemDefault()).toLocalDate()));
+                    }catch (Exception e){
+                        table.column(index).appendObj((new Date()).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+                    }
+//                    table.column(index).appendCell((c.getDateCellValue()).toString());
+                }else {
+                    table.column(index).appendObj(c.getStringCellValue());
+                }
+
+//                table.column(index).appendCell(String.valueOf(c.getStringCellValue()));
 //                    System.out.println(c.getStringCellValue());
             }
         }
@@ -142,6 +212,7 @@ public class ConnectorExcel implements Connector {
 //        }
 
         table.retainColumns(selectedField.toArray(new String[selectedField.size()]));
+        System.out.println("table read " +table );
         return table;
     }
 
@@ -182,7 +253,7 @@ public class ConnectorExcel implements Connector {
         return field;
     }
 
-    public List<Column> retrieveColumns(String tableName) throws FileNotFoundException {
+    public List<Column> retrieveColumns(String tableName, List<Column> listColumn) throws FileNotFoundException {
         List<Column> columns = new ArrayList<>();
 //        System.out.println("ko hieur 1 "+tableName);
         List<String> listNames = null;
@@ -194,11 +265,20 @@ public class ConnectorExcel implements Connector {
         }
 //        System.out.println("ko hieur "+listNames);
         for (int i = 0; i < listNames.size(); i++) {
-            columns.add(
-                    new Column(
-                            listNames.get(i),
-                            ColumnType.STRING
-                    ));
+            if (listColumn.size()>0){
+                columns.add(
+                        new Column(
+                                listNames.get(i),
+                                listColumn.get(i).getType()
+                        ));
+            }else {
+                columns.add(
+                        new Column(
+                                listNames.get(i),
+                                ColumnType.STRING
+                        ));
+            }
+
         }
 
         return columns;
@@ -231,7 +311,8 @@ public class ConnectorExcel implements Connector {
         XSSFWorkbook wb_template = new XSSFWorkbook(inputStream);
         int numberColumn = wb_template.getSheet(tableName).getRow(0).getPhysicalNumberOfCells();
         inputStream.close();
-        List<Column> columns = this.retrieveColumns(tableName);
+        List<Column> list = new ArrayList<Column>();
+        List<Column> columns = this.retrieveColumns(tableName,list);
         SXSSFWorkbook wb = new SXSSFWorkbook(wb_template); // keep 100 rows in memory, exceeding rows will be flushed to disk
         wb.setCompressTempFiles(true);
 

@@ -83,8 +83,8 @@ public class ConfigureTransformationDateSplitController implements Initializable
         eClickOk = event -> {
             closeType = CloseType.OK;
             List<SelectColumn> selectColumns = selects.getItems();
-            System.out.println(selectColumns.get(0).isSelected());
-            System.out.println(selectColumns.get(1).isSelected());
+//            System.out.println(selectColumns.get(0).isSelected());
+//            System.out.println(selectColumns.get(1).isSelected());
             SelectColumn selectedColumn = null;
             for (SelectColumn selectColumn : selectColumns) {
                 if (selectColumn.isSelected()) {
